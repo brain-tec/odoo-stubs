@@ -1,12 +1,14 @@
-from cache import *
 import threading
-import xlsxwriter
-import xlwt
 from collections import Mapping, MutableSet, defaultdict
 from itertools import repeat as repeat
-from odoo.loglevels import exception_to_unicode as exception_to_unicode, get_encodings as get_encodings
 from threading import local
 from typing import Any
+
+import xlsxwriter
+import xlwt
+from cache import *
+from odoo.loglevels import exception_to_unicode as exception_to_unicode
+from odoo.loglevels import get_encodings as get_encodings
 
 _logger: Any
 SKIPPED_ELEMENT_TYPES: Any
@@ -120,7 +122,12 @@ class mute_logger:
     def __init__(self, *loggers) -> None: ...
     def filter(self, record): ...
     def __enter__(self) -> None: ...
-    def __exit__(self, exc_type: Any | None = ..., exc_val: Any | None = ..., exc_tb: Any | None = ...) -> None: ...
+    def __exit__(
+        self,
+        exc_type: Any | None = ...,
+        exc_val: Any | None = ...,
+        exc_tb: Any | None = ...,
+    ) -> None: ...
     def __call__(self, func): ...
 
 _ph: Any
@@ -136,7 +143,6 @@ class CountingStream:
 def stripped_sys_argv(*strip_args): ...
 
 class ConstantMapping(Mapping):
-    __slots__: Any
     _value: Any
     def __init__(self, val) -> None: ...
     def __len__(self): ...
@@ -157,7 +163,6 @@ class frozendict(dict):
     def __hash__(self): ...
 
 class Collector(Mapping):
-    __slots__: Any
     _map: Any
     def __init__(self) -> None: ...
     def add(self, key, val) -> None: ...
@@ -166,7 +171,6 @@ class Collector(Mapping):
     def __len__(self): ...
 
 class OrderedSet(MutableSet):
-    __slots__: Any
     _map: Any
     def __init__(self, elems=...) -> None: ...
     def __contains__(self, elem): ...
@@ -180,7 +184,15 @@ class LastOrderedSet(OrderedSet):
 
 def ignore(*exc) -> None: ...
 def html_escape(text): ...
-def formatLang(env, value, digits: Any | None = ..., grouping: bool = ..., monetary: bool = ..., dp: bool = ..., currency_obj: bool = ...): ...
+def formatLang(
+    env,
+    value,
+    digits: Any | None = ...,
+    grouping: bool = ...,
+    monetary: bool = ...,
+    dp: bool = ...,
+    currency_obj: bool = ...,
+): ...
 def _consteq(str1, str2): ...
 
 consteq: Any
@@ -192,6 +204,7 @@ class Pickle:
     def loads(cls, text): ...
     dumps: Any
     dump: Any
+
 pickle = Pickle
 
 def wrap_module(module, attr_list): ...

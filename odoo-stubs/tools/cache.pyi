@@ -4,7 +4,6 @@ unsafe_eval = eval
 _logger: Any
 
 class ormcache_counter:
-    __slots__: Any
     hit: int
     miss: int
     err: int
@@ -47,4 +46,5 @@ class dummy_cache:
 
 def log_ormcache_stats(sig: Any | None = ..., frame: Any | None = ...) -> None: ...
 def get_cache_key_counter(bound_method, *args, **kwargs): ...
+
 cache = ormcache
