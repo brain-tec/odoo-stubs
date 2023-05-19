@@ -3,8 +3,8 @@ from typing import Any, Generic, Optional, TypeVar, overload
 
 from .models import BaseModel
 
-_FieldT = TypeVar('_FieldT', bound=Field)
-_FieldValueT = TypeVar('_FieldValueT')
+_FieldT = TypeVar("_FieldT", bound=Field)
+_FieldValueT = TypeVar("_FieldValueT")
 
 DATE_LENGTH: Any
 DATETIME_LENGTH: Any
@@ -261,6 +261,7 @@ class Datetime(Field[datetime.datetime]):
     def convert_to_cache(self, value, record, validate: bool = ...): ...
     def convert_to_export(self, value, record): ...
     def convert_to_display_name(self, value, record): ...
+
 _BINARY = memoryview
 
 class Binary(Field[bytes]):
@@ -335,7 +336,6 @@ class Many2one(_Relational):
     def convert_to_onchange(self, value, record, names): ...
 
 class _RelationalMultiUpdate:
-    __slots__: Any
     record: Any
     field: Any
     value: Any
@@ -358,7 +358,9 @@ class _RelationalMulti(_Relational):
 class One2many(_RelationalMulti):
     type: str
     _slots: Any
-    def __init__(self, comodel_name=..., inverse_name=..., string=..., **kwargs) -> None: ...
+    def __init__(
+        self, comodel_name=..., inverse_name=..., string=..., **kwargs
+    ) -> None: ...
     def _setup_regular_full(self, model) -> None: ...
     _description_relation_field: Any
     def convert_to_onchange(self, value, record, names): ...
@@ -369,7 +371,15 @@ class One2many(_RelationalMulti):
 class Many2many(_RelationalMulti):
     type: str
     _slots: Any
-    def __init__(self, comodel_name=..., relation=..., column1=..., column2=..., string=..., **kwargs) -> None: ...
+    def __init__(
+        self,
+        comodel_name=...,
+        relation=...,
+        column1=...,
+        column2=...,
+        string=...,
+        **kwargs
+    ) -> None: ...
     relation: Any
     column1: Any
     column2: Any

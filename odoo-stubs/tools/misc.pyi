@@ -1,11 +1,14 @@
-from .cache import *
 import pickle as pickle_
-import xlsxwriter
-import xlwt
 from collections import Mapping, MutableMapping, MutableSet, defaultdict
 from itertools import repeat as repeat
-from odoo.loglevels import exception_to_unicode as exception_to_unicode, get_encodings as get_encodings
 from typing import Any, Optional
+
+import xlsxwriter
+import xlwt
+from odoo.loglevels import exception_to_unicode as exception_to_unicode
+from odoo.loglevels import get_encodings as get_encodings
+
+from .cache import *
 
 _logger: Any
 SKIPPED_ELEMENT_TYPES: Any
@@ -72,7 +75,12 @@ class mute_logger:
     def __init__(self, *loggers) -> None: ...
     def filter(self, record): ...
     def __enter__(self) -> None: ...
-    def __exit__(self, exc_type: Optional[Any] = ..., exc_val: Optional[Any] = ..., exc_tb: Optional[Any] = ...) -> None: ...
+    def __exit__(
+        self,
+        exc_type: Optional[Any] = ...,
+        exc_val: Optional[Any] = ...,
+        exc_tb: Optional[Any] = ...,
+    ) -> None: ...
     def __call__(self, func): ...
 
 _ph: Any
@@ -89,7 +97,6 @@ class CountingStream:
 def stripped_sys_argv(*strip_args): ...
 
 class ConstantMapping(Mapping):
-    __slots__: Any
     _value: Any
     def __init__(self, val) -> None: ...
     def __len__(self): ...
@@ -110,7 +117,6 @@ class frozendict(dict):
     def __hash__(self) -> Any: ...
 
 class Collector(Mapping):
-    __slots__: Any
     _map: Any
     def __init__(self) -> None: ...
     def add(self, key, val) -> None: ...
@@ -119,7 +125,6 @@ class Collector(Mapping):
     def __len__(self): ...
 
 class OrderedSet(MutableSet):
-    __slots__: Any
     _map: Any
     def __init__(self, elems=...) -> None: ...
     def __contains__(self, elem): ...
@@ -134,7 +139,6 @@ class LastOrderedSet(OrderedSet):
 def unique(it) -> None: ...
 
 class Reverse:
-    __slots__: Any
     val: Any
     def __init__(self, val) -> None: ...
     def __eq__(self, other) -> Any: ...
@@ -146,7 +150,15 @@ class Reverse:
 
 def ignore(*exc) -> None: ...
 def html_escape(text): ...
-def formatLang(env, value, digits: Optional[Any] = ..., grouping: bool = ..., monetary: bool = ..., dp: bool = ..., currency_obj: bool = ...): ...
+def formatLang(
+    env,
+    value,
+    digits: Optional[Any] = ...,
+    grouping: bool = ...,
+    monetary: bool = ...,
+    dp: bool = ...,
+    currency_obj: bool = ...,
+): ...
 def format_date(env, value, lang_code: str = ..., date_format: bool = ...): ...
 def _consteq(str1, str2): ...
 
